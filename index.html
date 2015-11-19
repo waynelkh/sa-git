@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SA-GIT-Tutorial</title>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+                <section>
+                    <h1>VCS</h1>
+                    <h3>Version Control Systems</h3>
+                </section>
+                <section style="text-align: left;">
+                    <h1>Who am I?</h1>
+                    <h2>NCTU-CSCC TA</h2>
+                    <p>wnlee</p>
+                </section>
+                <section>
+                    <section>
+                        <h3>What is "verion control"</h3>
+                        <p>Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.</p>
+                        </section>
+                        <section>
+                        <p>Without Version Control</p>
+                        <img src="images/wincp.png" alt="wincp">
+                        </section>
+                        <section>
+                        <pre><code class="hljs" data-trim>
+# 2015-11-10
+cp -r project project.bak
+# 2015-11-11
+cp -r project project.bak1
+# 2015-11-12
+cp -r project project.bak2
+# 2015-11-15
+cp -r project project.bak3
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                      <p>Local Version Control Systems</p>  
+                      <img src="images/local.png" alt="local" height="600" />
+                    </section>
+                    <section>
+                      <p>Centralized Version Control Systems</p>  
+                      <img src="images/centralized.png" alt="centralized" height="600" />
+                    </section>
+                    <section>
+                      <p>Distributed Version Control Systems</p>  
+                      <img src="images/distributed.png" alt="distributed" height="600" />
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>GIT</h1>
+                        <p>Distributed Version Control Systems</p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>A Short History of Git</p>
+                        <ul>
+                            <li>Linus Torvalds (the creator of Linux)</li>
+                            <li>Source Control Management</li>
+                            <li>~2005 BitKeeper</li>
+                            <li>2005~ Git</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                       <p>Git Basic</p>
+                       <ul>
+                           <li>Snapshots, Not Differences</li>
+                           <li>Nearly Every Operation Is Local</li>
+                           <li>Git Has Integrity</li>
+                           <li>Git Generally Only Adds Data</li>
+                       </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>How to install</h2>
+                        <pre><code class="hljs">
+                        $ pkg install git
+                        </code></pre>
+                        <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">other os</a>
+                    </section>
+                    <section>
+                        <img src="images/git.png" alt="git">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h3>getting started</h3>
+                        <pre><code class="hljs" data-trim>
+git config --global user.email "you@example.com"
+git config --global user.name "Name"
+# global config in ~/.gitconfig
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>Getting a Git Repository</p>
+                        <pre><code class="hljs" data-trim>
+$ git init
+$ git add [file]
+$ git commit
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>The Three States<p>
+                        <img src="images/areas.png" alt="areas">
+                    </section>
+                    <section>
+                        <p>The lifecycle of the status of your files<p>
+                        <img src="images/lifecycle.png" alt="lifecycle">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>.gitignore</p>
+                        <pre><code class="hljs" data-trim>
+# no .a files
+*.a
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# ignore all files in the build/ directory
+build/
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+# ignore all .pdf files in the doc/ directory
+doc/**/*.pdf
+                        </code></pre>
+                        <a href="https://www.gitignore.io">gitignore.io</a>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>git add</p>
+                        <p>Add file contents to the index</p>
+                        <pre><code class="hljs" data-trim>
+$ git add file file1...
+$ git add directory
+$ git add .
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>git rm</p>
+                        <p>Add file contents to the index</p>
+                        <pre><code class="hljs" data-trim>
+$ git rm [file]
+# only remove files from the index (untrack the file)
+$ git rm --cached [file] 
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>git mv</p>
+                        <p>Add file contents to the index</p>
+                        <pre><code class="hljs" data-trim>
+$ git mv file_from file_to 
+# equivalent to
+$ mv file_from file_to
+$ git rm file_from
+$ git add file_to
+
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>git commit</p>
+                        <pre><code class="hljs" data-trim>
+$ git commit 
+-a: stage all modified and deleted path
+-m: use the given message as the commit message
+--amend: Replace the tip of the current branch by creating a new commit
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>git status</p>
+                        <pre><code class="hljs" data-trim>
+$ git status -s
+M README.md         # updated in index
+D run.sh            # deleted from index
+R src/main.js       # renamed in index
+A src/index.html    # added to index
+?? src/READEME.md   # untracked
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>git log</p>
+                        <pre><code class="hljs" data-trim>
+$ git log
+--all
+--graph
+commit 405251d689b10aba987a081589b334426968e2ac
+Author: wnlee wnlee@cs.nctu.edu.tw
+Date:   Thu Nov 13 15:22:07 2015 +0800
+
+    Initial commit
+
+
+$ git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+$ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+                        </code></pre>
+                        <a href="http://gits-scm.com/docs/pretty-formats">log formats</a>
+                    </section>
+                    <section>
+                        <p>git diff</p>
+                        <pre><code class="hljs" data-trim>
+git diff [commit] [commit] [file-path]
+--cached/--staged
+--word-diff
+                        </code></pre>
+                        <a href="https://git-scm.com/docs/git-diff">diff</a>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>Undoing Things</p>
+                        <pre><code class="hljs" data-trim>
+# Change preview commit again
+$ git commit --amend
+
+# Unstaging a Staged File
+$ git reset HEAD file
+
+# Unmodifying a Modified File
+$ git checkout -- file
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>git branch</p>
+                        <p>Branching means you diverge from the main line of development and continue to do work without messing with that main line</p>
+                    </section>
+                    <section>
+                        <p>git branch</p>
+                        <img src="images/gitflow.png" alt="gitflow.png">
+                    </section>
+                    <section>
+                        <p>git branch</p>
+                        <pre><code class="hljs" data-trim>
+# List, create, or delete branches
+$ git branch
+$ git branch [branch_name]
+$ git branch -d [branch_name]
+
+# switch to the branch
+$ git checkout [branch name]
+
+# create branch and switch to the branch
+$ git checkout -b [branch name]
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>git merge</p>
+                        <p>merge a branch into your current branch (HEAD)</p>
+                        <p>conflict</p>
+                        <ul>
+                            <li>Fast-forward</li>
+                            <li>Merge made by the 'recursive' strategy.</li>
+                            <li>Merge conflict</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <p>Merge Conflicts</p>
+                        <ul>
+                            <li>Fix Conflicts</li>
+                            <li>git add </li>
+                            <li>git commit</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <p>git rebase</p>
+                        <p>Forward-port local commits to the updated upstream head</p>
+                        <pre><code class="hljs" data-trim>
+# origin
+      A---B---C topic (HEAD)
+     /
+D---E---F---G master
+
+# git rebase master
+              A'--B'--C' topic
+             /
+D---E---F---G master
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>git rebase -i [commit]</p>
+                        <ul>
+                            <li>pick = use commit</li>
+                            <li>reword = use commit, but edit the commit message</li>
+                            <li>edit = use commit, but stop for amending</li>
+                            <li>squash = use commit, but meld into previous commit</li>
+                            <li>fixup = like "squash", but discard this commit's log message</li>
+                        </ul>
+                    </section>
+                </section>
+                <section style="text-align: left;">
+                    <section>
+                        <p>git blame</p>
+                        <p>show what revision and author last modified each line of a file</p>
+                        <br />
+                        <p>git show</p>
+                        <p>Show various types of objects</p>
+                    </section>
+                    <section>
+                        <p>git stash</p>
+                        <p>Stash the changes in a dirty working directory away</p>
+                        <br />
+                        <p>git tag</p>
+                        <p>Show various types of objects</p>
+                    </section>
+                    <section>
+                        <p>git reset</p>
+                        <p>Reset current HEAD to the specified state</p>
+                    </section>
+                </section>
+                <section style="text-align: left;">
+                    <section>
+                        <p>git clone</p>
+                        <p>Clone a repository into a new directory</p>
+                        <br />
+                        <p>git remote</p>
+                        <p>manage set of tracked repositories</p>
+                    </section>
+                    <section>
+                        <p>git fetch</p>
+                        <p>Download objects and refs from another repository</p>
+                        <br />
+                        <p>git pull</p>
+                        <p>git pull = git fetch + merge</p>
+                    </section>
+                    <section>
+                        <p>git push</p>
+                        <p>Update remote refs along with associated objects</p>
+                    </section>
+                </section>
+                <section>
+                    <h2>GITHUB</h2>
+                    <img src="images/github.png" alt="github">
+                </section>
+				<section style="text-align: left;">
+					<h1>The end</h1>
+					<h1>Q & A</h1>
+				</section>
+                <section id="themes">
+					<h2>Themes</h2>
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+                    <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+                transitionSpeed: 'fast',
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                slideNumber: true,
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
